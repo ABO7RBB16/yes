@@ -1,0 +1,54 @@
+@echo off
+title SERVER OVERLORD CMD - [TARGET: Fe5e1cf8-5dbf-42d5-bf1c-8e6d86db542f]
+color 0b
+
+set PLACE_ID=112398074615032
+set JOB_ID=c3a074ff-6b65-420d-b8dc-6e4bba8f7e74
+
+:main
+cls
+echo =======================================================
+echo    ROBLOX SERVER OVERLORD - ULTIMATE CMD MODE
+echo =======================================================
+echo  TARGET JOB_ID: %JOB_ID%
+echo  TARGET PLACE : %PLACE_ID%
+echo  STATUS       : LINKED AND READY
+echo =======================================================
+echo.
+echo  [1] EXTEND ^& LAG
+echo  [2] FULL CLEAN
+echo  [3] 500H PROTOCOL
+echo  [4] EXIT
+echo.
+set /p opt="Enter Command> "
+
+if %opt%==1 goto extend
+if %opt%==2 goto clean
+if %opt%==3 goto eternal
+if %opt%==4 exit
+
+:extend
+echo [%time%] [+] Sending Packet Spam...
+for /l %%i in (1,1,10) do (
+   start roblox://experiences/%PLACE_ID%?jobId=%JOB_ID%
+)
+timeout /t 3 >nul
+goto main
+
+:clean
+echo [%time%] [+] Cleaning Network ^& RAM...
+ipconfig /flushdns >nul
+taskkill /f /im RobloxPlayerBeta.exe >nul 2>&1
+echo [%time%] [+] Cleaned.
+pause
+goto main
+
+:eternal
+cls
+echo [!!!] ETERNAL MODE ACTIVE
+:loop
+echo [%time%] [+] Sending Keep-Alive Pulse...
+start roblox://experiences/%PLACE_ID%?jobId=%JOB_ID%
+timeout /t 480 /nobreak
+taskkill /f /im RobloxPlayerBeta.exe >nul 2>&1
+goto loop
